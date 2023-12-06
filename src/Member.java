@@ -1,26 +1,21 @@
-public abstract class Member {
-    // Atribut 
-    protected Integer poin = 0;
-    String namaPelanggan;
-    String nomorFaktur;
-    String namaBarang;
-    String nomorHp;
-    Integer hargaBarang;
-    Integer jumlahBarang;
-    Integer totalBayar;
+public class Member {
+
+// Atribut 
+String namaPelanggan;
+String alamat;
+String noFaktur;
+String noHp;
+Long totalBayar;
+Long jumlahBeli;
 
     // Method
-    public Integer getPoin(){
-        return poin;
+    public String getNamaPelanggan() {
+        return namaPelanggan;
     }
-
-    // Constructor
-    public Integer redeemPoin(Integer hargaSouvenir){
-        return this.poin = this.poin - hargaSouvenir;
+    public String getNomorHp() {
+        return noHp;
     }
-
-    protected Integer getBonusPoin(Integer totalBayar){
-        Integer poin = (int) (totalBayar / 10000);
-        return poin;
+    public String getAlamat() {
+        return alamat;
     }
 }

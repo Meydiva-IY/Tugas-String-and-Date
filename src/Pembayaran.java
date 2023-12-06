@@ -1,60 +1,55 @@
-// Menggunakan scanner
+import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-public class Pembayaran {
+public class Pembayaran extends Member implements iTotalBayar {
     public static void main(String[] args) {
-    // Polimorphisme
-    Member member =new MemberReguler(10);
-    System.out.println("Poin member1 adalah : " + member .getPoin());
-    System.out.println("");
-    Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
+        try {
+            System.out.print("Masukkan No Faktur: ");
+            String noFaktur = scanner.nextLine();
+            System.out.print("Masukkan Nama Pelanggan: ");
+            String namaPelanggan = scanner.nextLine();
+            System.out.print("Masukkan No Hp: ");
+            String noHp = scanner.nextLine();
+            System.out.print("Masukkan Alamat: ");
+            String alamat = scanner.nextLine();
+            System.out.print("Masukkan Nama Barang: ");
+            String namaBarang = scanner.nextLine();
+            System.out.print("Masukkan Harga Barang: ");
+            long hargaBarang = scanner.nextLong();
+            System.out.print("Masukkan Jumlah Beli: ");
+            Long jumlahBeli = scanner.nextLong();
+            System.out.println("");
+            long totalBayar = hargaBarang * jumlahBeli;
 
-    try {
-        // Input Atribut dengan scanner  
-        Member tes1 = new Member(){};
+            Date date = new Date();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("EEE, dd/MM/yyyy");
+            SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm:ss a z");
 
-        System.out.print("Masukkan No. Faktur: ");
-        tes1.nomorFaktur = scanner.nextLine();
-
-        System.out.print("Masukkan Nama Pelanggan: ");
-        tes1.namaPelanggan = scanner.nextLine();
-
-        System.out.print("Masukkan No. Hp: ");
-        tes1.nomorHp = scanner.nextLine();
-
-        System.out.println("Detail Pembayaran");
-        System.out.print("Masukkan Nama Barang: ");
-        tes1.namaBarang = scanner.nextLine();
-
-        System.out.print("Masukkan Harga Barang: ");
-        tes1.hargaBarang = scanner.nextInt();
-
-        System.out.print("Masukkan Jumlah Barang: ");
-        tes1.jumlahBarang = scanner.nextInt();
-
-        // Menghitung total bayar
-        tes1.totalBayar = tes1.hargaBarang * tes1.jumlahBarang;
-
-        // Menampilkan hasil dalam bentuk nota 
-        System.out.println("");
-        System.out.println("");
-        System.out.println("-------------------------");
-        System.out.println("No. Faktur: " + tes1.nomorFaktur);
-        System.out.println("Nama Pelanggan: " + tes1.namaPelanggan);
-        System.out.println("No. HP: " + tes1.nomorHp);
-        System.out.println("Detail Pembayaran");
-        System.out.println("Nama Barang: " + tes1.namaBarang);
-        System.out.println("Harga Barang: " + tes1.hargaBarang);
-        System.out.println("Jumlah Barang: " + tes1.jumlahBarang);
-        System.out.println("Total Bayar: " + tes1.totalBayar);
-        System.out.println("-------------------------");
-
-    } catch (java.util.InputMismatchException e) {
-    // Jika terjadi error pada inputan atribut
-    System.out.println("Maaf, input tidak valid. Tolong input kembali dengan menggunakan numerik untuk harga dan jumlah barang.");
-    } finally {
-    // Menutup scanner setelah selesai digunakan
-    scanner.close();
-            }
+            System.out.println("");
+            System.out.println("----------- MY MINIMARKET -----------");
+            System.out.println("Tanggal Transaksi : " + dateFormat.format(date));
+            System.out.println("Jam : " + timeFormat.format(date));
+            System.out.println("No Faktur : " + noFaktur);
+            System.out.println("====================================");
+            System.out.println("---------- DATA PELANGGAN ----------");
+            System.out.println("Nama Pelanggan \t: " + namaPelanggan.toUpperCase());
+            System.out.println("No HP \t\t: " + noHp);
+            System.out.println("Alamat \t\t: " + alamat);
+            System.out.println("------ DATA PEMBELIAN BARANG -------");
+            System.out.println("Nama Barang \t: " + namaBarang);
+            System.out.println("Harga Barang \t: " + hargaBarang);
+            System.out.println("Jumlah Beli \t: " + jumlahBeli);
+            System.out.println("Total Bayar \t: " + totalBayar);
+            System.out.println("------------------------------------");
+            System.out.println("Kasir \t\t: Meydiva Intayeza");
+ 
+        } catch (InputMismatchException e) {
+            System.out.println("Input tidak valid. Pastikan input data sesuai dengan tipe data yang benar.");
+        } finally {
+            scanner.close();
         }
     }
+}

@@ -1,3 +1,6 @@
+
 public interface iTotalBayar {
-    public Integer hitungTotalBayar(Integer jumlahBelanja);
+    public static long hitungTotalBayar(long hargaBarang, long jumlahBeli) {
+        return hargaBarang * jumlahBeli;
+    }
 }
